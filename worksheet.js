@@ -10,6 +10,31 @@
 // vice-versa.
 
 // see test.js for example usage
+var tile1 = {
+    color: 'blue'
+}
+var tile2 = {
+    color: 'red'
+}
+var tile3 = {
+    color: 'green'
+}
+
+var flipColor = function(tile) {
+    if(tile['color'] === 'blue'){
+    	tile['color'] = 'red'
+        return tile
+    }
+    else if(tile['color'] === 'red'){
+    	(tile['color'] = 'blue')
+        return tile
+    }
+    else {
+    	return (tile)
+    }
+}
+
+flipColor(tile2)
 
 
 // Part 1
@@ -19,6 +44,33 @@
 // of strings, where each string is a customer's full name.
 
 // see test.js for example usage
+
+var names = [
+   {first: 'Bob',
+    last: 'Smith'
+   },
+   {first: 'Bill',
+   last: 'Gates'
+   },
+   {first: 'Jack',
+   last: 'Wolgamott'
+   }
+]
+
+var getFullNames = function(array){
+ 	var fullNames = []   
+    for(var index = 0; index < array.length; index = index +1){
+    	var firstName = (array[index]["first"])
+        
+        var lastName = (array[index]["last"])
+        
+        fullNames.push(firstName + " " + lastName)
+        
+    }
+    return fullNames
+    
+}
+getFullNames(names)
 
 // Part 2
 
@@ -35,6 +87,32 @@
 // see test.js for example usage
 
 
+var speak = function(string){
+	var words = string.split(' ')
+    var retters = []
+    for(var index = 0; index < words.length; index = index + 1){
+        var letters = (words[index].split(''))
+        letters[0] = 'r'
+        retters.push(letters.join(''));
+    }
+    return retters.join(' ')
+}
+
+
+var generateDog = function(string){
+	var dog = {}
+    dog['name'] = (string);
+    dog['legs'] = 4;
+    dog['weight'] = '6 lbs';
+    dog['color'] = 'chocolate';
+    dog['speak'] =  speak
+    return dog
+}
+// log(generateDog("weezie"))
+
+var dog = generateDog("weezie")
+
+
 // Part 3
 
 // Write a function pluck() that, given a list of objects, extracts a list of
@@ -45,12 +123,42 @@
 
 // see test.js for example usage
 
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}]
+
+
+var pluck = function(objects,key){
+ 	var output = []
+    for(var index = 0; index < objects.length; index = index + 1){
+    	var value = objects[index][key]
+        output.push(value)
+    }
+    return output
+}
+pluck(stooges,'name')
+
 // Part 4
 
 // Write a function called getCounts that takes a string of text as input and returns
 // an object which stores the frequency of each word in the string.
 
 // Note that your counts should NOT be case-sensitive.
+
+var getCounts = function(string){
+    
+    var words = string.split(' ')
+    var output = {}
+    for (var index = 0; index < words.length; index = index + 1) {
+		var word = words[index]
+        if(output[word]){
+        (output[word]) = (output[word] +1)
+		}
+		else {
+			output[word] = 1
+		}  
+    }
+    return output
+}
+getCounts('cool cool cool fool tool rule cool')
 
 
 // check test.js for examples of how this function should be used.
